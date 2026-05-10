@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wasteland Rust</title>
 
 <style>
-
+/* CSS remains largely the same, kept for layout integrity */
 *{
     margin:0;
     padding:0;
@@ -28,7 +28,7 @@ header{
     min-height:100vh;
     background:
     linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)),
-    url("20260511013255_1.jpg");
+    url("20260511013255_1.jpg"); /* Replace with your image path */
     background-size:cover;
     background-position:center;
     padding:20px 8%;
@@ -196,7 +196,7 @@ section{
 
 .status{
     margin-top:18px;
-    color:#66ff99;
+    color:#ff4444; /* Changed to red to emphasize the message */
     font-weight:bold;
 }
 
@@ -218,229 +218,137 @@ footer{
 }
 
 @media(max-width:768px){
-
-.hero h1{
-    font-size:52px;
+    .hero h1{ font-size:52px; }
+    nav{ flex-direction:column; gap:15px; }
+    nav ul{ flex-wrap:wrap; justify-content:center; }
+    .hero{ margin-top:100px; }
 }
-
-nav{
-    flex-direction:column;
-    gap:15px;
-}
-
-nav ul{
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-.hero{
-    margin-top:100px;
-}
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-
 <nav>
 <div class="logo">Wasteland Rust</div>
-
 <ul>
-<li><a href="#server">Сервер</a></li>
-<li><a href="#store">Магазин</a></li>
+<li><a href="#server">Server</a></li>
+<li><a href="#store">Store</a></li>
 <li><a href="#discord">Discord</a></li>
 </ul>
 </nav>
 
 <div class="hero">
-
-<h1>Выживай. Рейдь. Доминируй.</h1>
-
+<h1>Survive. Raid. Dominate.</h1>
 <p>
-Лучший Rust сервер с честным PvP,
-активной администрацией и
-ежемесячными вайпами.
+The best Rust server with fair PvP, 
+active administration, and 
+monthly wipes.
 </p>
-
-<a class="btn" href="steam://connect/127.0.0.1:28015">
-ПОДКЛЮЧИТЬСЯ
-</a>
-
+<a class="btn" href="steam://connect/127.0.0.1:28015">JOIN NOW</a>
 </div>
-
 </header>
 
 <section id="features">
-
-<h2 class="section-title">Почему именно мы</h2>
-
+<h2 class="section-title">Why Choose Us</h2>
 <div class="features">
-
 <div class="card">
-<h3>Активная Администрация</h3>
-<p>
-Быстрая помощь игрокам,
-контроль читеров и честная игра.
-</p>
+<h3>Active Admin Team</h3>
+<p>Quick player support, anti-cheat control, and fair play enforcement.</p>
 </div>
-
 <div class="card">
-<h3>Сбалансированный Геймплей</h3>
-<p>
-Минимум Pay-to-Win,
-справедливый лут и стабильная экономика.
-</p>
+<h3>Balanced Gameplay</h3>
+<p>No Pay-to-Win mechanics, fair loot tables, and a stable economy.</p>
 </div>
-
 <div class="card">
-<h3>Стабильный Сервер</h3>
-<p>
-Минимальный лаг,
-стабильный FPS
-и высокая производительность.
-</p>
+<h3>Stable Performance</h3>
+<p>Minimal lag, stable FPS, and high-performance hardware.</p>
 </div>
-
 </div>
-
 </section>
 
 <section class="server-info" id="server">
-
-<h2 class="section-title">Информация о Сервере</h2>
-
+<h2 class="section-title">Server Info</h2>
 <div class="info-grid">
-
 <div class="info-box">
-<span>IP Адрес</span>
+<span>IP Address</span>
 <h3>127.0.0.1:28015</h3>
 </div>
-
 <div class="info-box">
-<span>Размер Карты</span>
+<span>Map Size</span>
 <h3>4250</h3>
 </div>
-
 <div class="info-box">
-<span>Вайп Чертежей</span>
-<h3>Каждый Месяц</h3>
+<span>Blueprint Wipe</span>
+<h3>Monthly</h3>
 </div>
-
 <div class="info-box">
-<span>Лимит Команды</span>
-<h3>Максимум 5 Игроков</h3>
+<span>Team Limit</span>
+<h3>Max 5 Players</h3>
 </div>
-
 </div>
-
 </section>
 
 <section class="store" id="store">
-
-<h2 class="section-title">Магазин</h2>
-
+<h2 class="section-title">Store</h2>
 <div class="vip-grid">
 
+<!-- All prices set to 4.99$ as requested -->
 <div class="store-box">
-
-<h3>VIP Неделя</h3>
-
-<div class="price">199₽</div>
-
+<h3>VIP Week</h3>
+<div class="price">$4.99</div>
 <ul>
-<li>VIP Кит</li>
-<li>VIP Тэг</li>
-<li>7 Дней</li>
+<li>VIP Kit</li>
+<li>VIP Tag</li>
+<li>7 Days</li>
 </ul>
-
-<button class="btn" onclick="buyVip('week')">
-Оплатить через СБП
-</button>
-
+<button class="btn" onclick="buyVip('week')">Buy Kit</button>
 <p id="week-status" class="status"></p>
-
 </div>
 
 <div class="store-box">
-
-<h3>VIP Месяц</h3>
-
-<div class="price">499₽</div>
-
+<h3>VIP Month</h3>
+<div class="price">$4.99</div>
 <ul>
-<li>VIP Кит</li>
-<li>VIP Тэг</li>
-<li>30 Дней</li>
+<li>VIP Kit</li>
+<li>VIP Tag</li>
+<li>30 Days</li>
 </ul>
-
-<button class="btn" onclick="buyVip('month')">
-Оплатить через СБП
-</button>
-
+<button class="btn" onclick="buyVip('month')">Buy Kit</button>
 <p id="month-status" class="status"></p>
-
 </div>
 
 <div class="store-box">
-
-<h3>VIP Год</h3>
-
-<div class="price">1999₽</div>
-
+<h3>VIP Year</h3>
+<div class="price">$4.99</div>
 <ul>
-<li>VIP Кит</li>
-<li>VIP Тэг</li>
-<li>365 Дней</li>
+<li>VIP Kit</li>
+<li>VIP Tag</li>
+<li>365 Days</li>
 </ul>
-
-<button class="btn" onclick="buyVip('year')">
-Оплатить через СБП
-</button>
-
+<button class="btn" onclick="buyVip('year')">Buy Kit</button>
 <p id="year-status" class="status"></p>
-
 </div>
 
 <div class="store-box">
-
-<h3>VIP Навсегда</h3>
-
-<div class="price">4999₽</div>
-
+<h3>VIP Lifetime</h3>
+<div class="price">$4.99</div>
 <ul>
-<li>VIP Кит</li>
-<li>VIP Тэг</li>
-<li>Lifetime VIP</li>
+<li>VIP Kit</li>
+<li>VIP Tag</li>
+<li>Forever</li>
 </ul>
-
-<button class="btn" onclick="buyVip('lifetime')">
-Оплатить через СБП
-</button>
-
+<button class="btn" onclick="buyVip('lifetime')">Buy Kit</button>
 <p id="lifetime-status" class="status"></p>
-
 </div>
 
 </div>
-
 </section>
 
 <section class="discord" id="discord">
-
-<h2 class="section-title">Discord Сервер</h2>
-
-<p>
-Следи за новостями,
-вайпами и обновлениями сервера.
-</p>
-
-<a class="btn" href="#">
-ПРИСОЕДИНИТЬСЯ
-</a>
-
+<h2 class="section-title">Discord Server</h2>
+<p>Stay updated with news, wipes, and server events.</p>
+<a class="btn" href="#">JOIN DISCORD</a>
 </section>
 
 <footer>
@@ -448,33 +356,17 @@ nav ul{
 </footer>
 
 <script>
-
 function buyVip(type){
-
-    localStorage.setItem(type + "_vip","true");
-
-    document.getElementById(type + "-status").innerText =
-    "✔ VIP куплен";
-
-}
-
-window.onload = function(){
-
     const types = ["week","month","year","lifetime"];
-
-    types.forEach(type => {
-
-        if(localStorage.getItem(type + "_vip")){
-
-            document.getElementById(type + "-status").innerText =
-            "✔ VIP куплен";
-
-        }
-
+    
+    // Clear previous status messages
+    types.forEach(t => {
+        document.getElementById(t + "-status").innerText = "";
     });
 
+    // Display the "not p2w" message
+    document.getElementById(type + "-status").innerText = "We are not p2w";
 }
-
 </script>
 
 </body>
