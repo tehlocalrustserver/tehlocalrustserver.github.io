@@ -28,7 +28,7 @@ header{
     min-height:100vh;
     background:
     linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)),
-    url("20260511013255_1.jpg?q=80&w=1600&auto=format&fit=crop");
+    url("20260511013255_1.jpg");
     background-size:cover;
     background-position:center;
     padding:20px 8%;
@@ -166,6 +166,37 @@ section{
     font-size:18px;
 }
 
+.store{
+    background:#151515;
+    text-align:center;
+}
+
+.store-box{
+    max-width:420px;
+    margin:auto;
+    background:#1b1b1b;
+    padding:40px;
+    border-radius:18px;
+    border:1px solid #2d2d2d;
+}
+
+.price{
+    font-size:52px;
+    color:#ff7b00;
+    margin:20px 0;
+    font-weight:bold;
+}
+
+.store-box ul{
+    list-style:none;
+    margin:25px 0;
+}
+
+.store-box li{
+    margin:12px 0;
+    color:#ccc;
+}
+
 footer{
     text-align:center;
     padding:30px;
@@ -205,8 +236,8 @@ nav ul{
 <div class="logo">Wasteland Rust</div>
 
 <ul>
-<li><a href="#features">Особенности</a></li>
 <li><a href="#server">Сервер</a></li>
+<li><a href="#store">Магазин</a></li>
 <li><a href="#discord">Discord</a></li>
 </ul>
 </nav>
@@ -217,9 +248,8 @@ nav ul{
 
 <p>
 Лучший Rust сервер с честным PvP,
-активной администрацией,
-ежемесячными вайпами
-и уникальными событиями.
+активной администрацией и
+ежемесячными вайпами.
 </p>
 
 <a class="btn" href="steam://connect/127.0.0.1:28015">
@@ -237,10 +267,10 @@ nav ul{
 <div class="features">
 
 <div class="card">
-<h3>Кастомные Ивенты</h3>
+<h3>Активная Администрация</h3>
 <p>
-Рейд-базы, PvP турниры,
-карго баталии и случайные события каждую неделю.
+Быстрая помощь игрокам,
+контроль читеров и честная игра.
 </p>
 </div>
 
@@ -248,7 +278,7 @@ nav ul{
 <h3>Сбалансированный Геймплей</h3>
 <p>
 Никакого Pay-to-Win,
-справедливый лут и постоянная модерация.
+справедливый лут и стабильная экономика.
 </p>
 </div>
 
@@ -295,13 +325,38 @@ nav ul{
 
 </section>
 
+<section class="store" id="store">
+
+<h2 class="section-title">Магазин</h2>
+
+<div class="store-box">
+
+<h3>VIP Пакет</h3>
+
+<div class="price">199₽</div>
+
+<ul>
+<li>Очередь VIP</li>
+<li>Цветной ник</li>
+<li>Небольшие бонусы</li>
+<li>Поддержка сервера</li>
+</ul>
+
+<a class="btn" href="#">
+Оплатить через СБП
+</a>
+
+</div>
+
+</section>
+
 <section class="discord" id="discord">
 
 <h2 class="section-title">Discord Сервер</h2>
 
 <p>
 Следи за новостями,
-вайпами и событиями сервера.
+вайпами и обновлениями сервера.
 </p>
 
 <a class="btn" href="#">
