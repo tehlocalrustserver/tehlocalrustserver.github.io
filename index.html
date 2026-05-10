@@ -87,8 +87,10 @@ nav a:hover{
     background:#ff7b00;
     color:white;
     text-decoration:none;
+    border:none;
     border-radius:12px;
     font-weight:bold;
+    cursor:pointer;
     transition:.2s;
 }
 
@@ -104,6 +106,7 @@ section{
     font-size:44px;
     margin-bottom:40px;
     color:#ff7b00;
+    text-align:center;
 }
 
 .features{
@@ -156,28 +159,22 @@ section{
     color:#999;
 }
 
-.discord{
-    text-align:center;
-}
-
-.discord p{
-    margin:20px 0 35px;
-    color:#ccc;
-    font-size:18px;
-}
-
 .store{
-    background:#151515;
-    text-align:center;
+    background:#111;
+}
+
+.vip-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
 .store-box{
-    max-width:420px;
-    margin:auto;
     background:#1b1b1b;
     padding:40px;
     border-radius:18px;
     border:1px solid #2d2d2d;
+    text-align:center;
 }
 
 .price{
@@ -195,6 +192,22 @@ section{
 .store-box li{
     margin:12px 0;
     color:#ccc;
+}
+
+.status{
+    margin-top:18px;
+    color:#66ff99;
+    font-weight:bold;
+}
+
+.discord{
+    text-align:center;
+}
+
+.discord p{
+    margin:20px 0 35px;
+    color:#ccc;
+    font-size:18px;
 }
 
 footer{
@@ -329,21 +342,87 @@ nav ul{
 
 <h2 class="section-title">Магазин</h2>
 
+<div class="vip-grid">
+
 <div class="store-box">
 
-<h3>VIP Пакет</h3>
+<h3>VIP Неделя</h3>
 
 <div class="price">199₽</div>
 
 <ul>
-<li>Кит VIP</li>
-<li>Тэг VIP</li>
-<li>Поддержка сервера</li>
+<li>VIP Кит</li>
+<li>VIP Тэг</li>
+<li>7 Дней</li>
 </ul>
 
-<a class="btn" href="#">
+<button class="btn" onclick="buyVip('week')">
 Оплатить через СБП
-</a>
+</button>
+
+<p id="week-status" class="status"></p>
+
+</div>
+
+<div class="store-box">
+
+<h3>VIP Месяц</h3>
+
+<div class="price">499₽</div>
+
+<ul>
+<li>VIP Кит</li>
+<li>VIP Тэг</li>
+<li>30 Дней</li>
+</ul>
+
+<button class="btn" onclick="buyVip('month')">
+Оплатить через СБП
+</button>
+
+<p id="month-status" class="status"></p>
+
+</div>
+
+<div class="store-box">
+
+<h3>VIP Год</h3>
+
+<div class="price">1999₽</div>
+
+<ul>
+<li>VIP Кит</li>
+<li>VIP Тэг</li>
+<li>365 Дней</li>
+</ul>
+
+<button class="btn" onclick="buyVip('year')">
+Оплатить через СБП
+</button>
+
+<p id="year-status" class="status"></p>
+
+</div>
+
+<div class="store-box">
+
+<h3>VIP Навсегда</h3>
+
+<div class="price">4999₽</div>
+
+<ul>
+<li>VIP Кит</li>
+<li>VIP Тэг</li>
+<li>Lifetime VIP</li>
+</ul>
+
+<button class="btn" onclick="buyVip('lifetime')">
+Оплатить через СБП
+</button>
+
+<p id="lifetime-status" class="status"></p>
+
+</div>
 
 </div>
 
@@ -367,6 +446,36 @@ nav ul{
 <footer>
 © 2026 Wasteland Rust — All Rights Reserved
 </footer>
+
+<script>
+
+function buyVip(type){
+
+    localStorage.setItem(type + "_vip","true");
+
+    document.getElementById(type + "-status").innerText =
+    "✔ VIP куплен";
+
+}
+
+window.onload = function(){
+
+    const types = ["week","month","year","lifetime"];
+
+    types.forEach(type => {
+
+        if(localStorage.getItem(type + "_vip")){
+
+            document.getElementById(type + "-status").innerText =
+            "✔ VIP куплен";
+
+        }
+
+    });
+
+}
+
+</script>
 
 </body>
 </html>
