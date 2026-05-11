@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wasteland Rust</title>
-
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -18,7 +12,7 @@ html{
 }
 
 body{
-    background:#070707;
+    background:#060606;
     color:white;
     overflow-x:hidden;
 }
@@ -26,51 +20,48 @@ body{
 header{
     min-height:100vh;
     background:
-    linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.92)),
+    radial-gradient(circle at top, rgba(255,120,0,.25), transparent 45%),
+    linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.92)),
     url("20260511013255_1.jpg");
     background-size:cover;
     background-position:center;
-    padding:20px 8%;
-    position:relative;
-}
-
-header::after{
-    content:"";
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:180px;
-    background:linear-gradient(to top,#070707,transparent);
+    display:flex;
+    flex-direction:column;
+    padding:30px 7%;
 }
 
 nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:10px 0;
-    position:relative;
-    z-index:2;
+    background:rgba(15,15,15,.75);
+    backdrop-filter:blur(10px);
+    padding:18px 30px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.05);
 }
 
 .logo{
-    font-size:36px;
+    font-size:30px;
     font-weight:900;
     color:#ff7b00;
-    letter-spacing:1px;
+    text-transform:uppercase;
+    letter-spacing:2px;
 }
 
 nav ul{
     display:flex;
     list-style:none;
-    gap:30px;
+    gap:35px;
 }
 
 nav a{
-    color:white;
+    color:#d8d8d8;
     text-decoration:none;
-    transition:.2s;
-    font-weight:bold;
+    font-size:15px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    transition:.25s;
 }
 
 nav a:hover{
@@ -78,89 +69,102 @@ nav a:hover{
 }
 
 .hero{
-    margin-top:170px;
-    max-width:760px;
-    position:relative;
-    z-index:2;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    max-width:750px;
 }
 
 .hero h1{
-    font-size:88px;
-    line-height:.95;
-    margin-bottom:28px;
+    font-size:96px;
+    line-height:.9;
+    margin-bottom:25px;
+    font-weight:900;
     text-transform:uppercase;
 }
 
 .hero p{
-    color:#d0d0d0;
-    font-size:22px;
+    color:#bcbcbc;
+    font-size:20px;
+    line-height:1.8;
     margin-bottom:40px;
-    line-height:1.7;
 }
 
 .btn{
-    display:inline-block;
-    padding:18px 42px;
     background:#ff7b00;
     color:white;
     text-decoration:none;
+    padding:18px 42px;
+    border-radius:100px;
+    font-weight:bold;
     border:none;
-    border-radius:14px;
-    font-weight:800;
     cursor:pointer;
-    transition:.2s;
-    box-shadow:0 0 25px rgba(255,123,0,.25);
+    transition:.25s;
+    box-shadow:0 10px 35px rgba(255,123,0,.3);
 }
 
 .btn:hover{
-    transform:translateY(-4px) scale(1.02);
+    transform:scale(1.05);
+    box-shadow:0 15px 40px rgba(255,123,0,.45);
 }
 
 section{
-    padding:110px 8%;
+    padding:120px 7%;
 }
 
 .section-title{
-    font-size:52px;
-    margin-bottom:50px;
-    color:#ff7b00;
     text-align:center;
+    font-size:58px;
+    margin-bottom:60px;
     text-transform:uppercase;
+    font-weight:900;
 }
 
 .features{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:30px;
 }
 
 .card{
-    background:#131313;
-    padding:38px;
-    border-radius:22px;
-    border:1px solid #262626;
-    transition:.25s;
-    box-shadow:0 0 30px rgba(0,0,0,.3);
+    background:linear-gradient(145deg,#111,#1b1b1b);
+    padding:45px;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.05);
+    position:relative;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:#ff7b00;
 }
 
 .card:hover{
-    transform:translateY(-8px);
-    border-color:#ff7b00;
+    transform:translateY(-10px) rotate(-1deg);
 }
 
 .card h3{
-    margin-bottom:16px;
+    font-size:28px;
+    margin-bottom:20px;
     color:#ff7b00;
-    font-size:24px;
 }
 
 .card p{
-    color:#bdbdbd;
-    line-height:1.7;
+    color:#c8c8c8;
+    line-height:1.8;
 }
 
 .server-info{
-    background:#0d0d0d;
+    background:#0b0b0b;
 }
 
 .info-grid{
@@ -170,116 +174,120 @@ section{
 }
 
 .info-box{
-    background:#171717;
-    padding:34px;
-    border-radius:20px;
-    border:1px solid #252525;
-    transition:.2s;
+    background:#131313;
+    padding:40px;
+    border-radius:24px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.05);
+    transition:.25s;
 }
 
 .info-box:hover{
+    transform:translateY(-8px);
     border-color:#ff7b00;
 }
 
 .info-box span{
     display:block;
-    margin-bottom:14px;
-    color:#8f8f8f;
-    font-size:15px;
+    color:#888;
+    margin-bottom:15px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:14px;
 }
 
 .info-box h3{
-    font-size:28px;
+    font-size:32px;
 }
 
 .store{
-    background:#090909;
+    background:linear-gradient(to bottom,#070707,#111);
 }
 
 .vip-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:35px;
 }
 
 .store-box{
-    background:linear-gradient(180deg,#161616,#101010);
-    padding:45px;
-    border-radius:24px;
-    border:1px solid #262626;
+    background:#121212;
+    padding:50px 35px;
+    border-radius:30px;
     text-align:center;
-    transition:.25s;
+    border:1px solid rgba(255,255,255,.05);
+    transition:.3s;
     position:relative;
-    overflow:hidden;
-}
-
-.store-box::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:4px;
-    background:#ff7b00;
 }
 
 .store-box:hover{
-    transform:translateY(-8px);
+    transform:translateY(-12px) scale(1.02);
     border-color:#ff7b00;
 }
 
+.store-box h3{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
 .price{
-    font-size:60px;
+    font-size:64px;
+    font-weight:900;
     color:#ff7b00;
     margin:25px 0;
-    font-weight:900;
 }
 
 .store-box ul{
     list-style:none;
-    margin:30px 0;
+    margin-bottom:35px;
 }
 
 .store-box li{
     margin:14px 0;
-    color:#c7c7c7;
+    color:#c9c9c9;
     font-size:17px;
 }
 
 .status{
     margin-top:20px;
-    color:#ff9d42;
+    color:#ffb15c;
     font-weight:bold;
-    font-size:16px;
 }
 
 .discord{
     text-align:center;
+    background:#090909;
 }
 
 .discord p{
-    margin:20px 0 40px;
-    color:#cfcfcf;
     font-size:20px;
+    color:#c5c5c5;
+    margin:20px auto 40px;
+    max-width:700px;
+    line-height:1.8;
 }
 
 footer{
     text-align:center;
-    padding:35px;
-    border-top:1px solid #1d1d1d;
-    color:#777;
-    background:#050505;
+    padding:40px;
+    color:#666;
+    background:black;
+    border-top:1px solid rgba(255,255,255,.05);
 }
 
 @media(max-width:768px){
 
 .hero h1{
-    font-size:56px;
+    font-size:58px;
+}
+
+.section-title{
+    font-size:42px;
 }
 
 nav{
     flex-direction:column;
-    gap:18px;
+    gap:20px;
 }
 
 nav ul{
@@ -288,160 +296,12 @@ nav ul{
 }
 
 .hero{
-    margin-top:110px;
-}
-
-.section-title{
-    font-size:38px;
+    padding-top:80px;
 }
 
 .price{
     font-size:48px;
 }
 }
+
 </style>
-</head>
-
-<body>
-
-<header>
-<nav>
-<div class="logo">Wasteland Rust</div>
-<ul>
-<li><a href="#server">Server</a></li>
-<li><a href="#store">Store</a></li>
-<li><a href="#discord">Discord</a></li>
-</ul>
-</nav>
-
-<div class="hero">
-<h1>Survive. Raid. Dominate.</h1>
-<p>
-The best Rust server with fair PvP, 
-active administration, and 
-monthly wipes.
-</p>
-<a class="btn" href="steam://connect/127.0.0.1:28015">JOIN NOW</a>
-</div>
-</header>
-
-<section id="features">
-<h2 class="section-title">Why Choose Us</h2>
-<div class="features">
-<div class="card">
-<h3>Active Admin Team</h3>
-<p>Quick player support, anti-cheat control, and fair play enforcement.</p>
-</div>
-<div class="card">
-<h3>Balanced Gameplay</h3>
-<p>No Pay-to-Win mechanics, fair loot tables, and a stable economy.</p>
-</div>
-<div class="card">
-<h3>Stable Performance</h3>
-<p>Minimal lag, stable FPS, and high-performance hardware.</p>
-</div>
-</div>
-</section>
-
-<section class="server-info" id="server">
-<h2 class="section-title">Server Info</h2>
-<div class="info-grid">
-<div class="info-box">
-<span>IP Address</span>
-<h3>127.0.0.1:28015</h3>
-</div>
-<div class="info-box">
-<span>Map Size</span>
-<h3>4250</h3>
-</div>
-<div class="info-box">
-<span>Blueprint Wipe</span>
-<h3>Monthly</h3>
-</div>
-<div class="info-box">
-<span>Team Limit</span>
-<h3>Max 5 Players</h3>
-</div>
-</div>
-</section>
-
-<section class="store" id="store">
-<h2 class="section-title">Store</h2>
-<div class="vip-grid">
-
-<div class="store-box">
-<h3>VIP Week</h3>
-<div class="price">$4.99</div>
-<ul>
-<li>VIP Kit</li>
-<li>VIP Tag</li>
-<li>7 Days</li>
-</ul>
-<button class="btn" onclick="buyVip('week')">Buy Kit</button>
-<p id="week-status" class="status"></p>
-</div>
-
-<div class="store-box">
-<h3>VIP Month</h3>
-<div class="price">$7.99</div>
-<ul>
-<li>VIP Kit</li>
-<li>VIP Tag</li>
-<li>30 Days</li>
-</ul>
-<button class="btn" onclick="buyVip('month')">Buy Kit</button>
-<p id="month-status" class="status"></p>
-</div>
-
-<div class="store-box">
-<h3>VIP Year</h3>
-<div class="price">$24.99</div>
-<ul>
-<li>VIP Kit</li>
-<li>VIP Tag</li>
-<li>365 Days</li>
-</ul>
-<button class="btn" onclick="buyVip('year')">Buy Kit</button>
-<p id="year-status" class="status"></p>
-</div>
-
-<div class="store-box">
-<h3>VIP Lifetime</h3>
-<div class="price">$89.99</div>
-<ul>
-<li>VIP Kit</li>
-<li>VIP Tag</li>
-<li>Forever</li>
-</ul>
-<button class="btn" onclick="buyVip('lifetime')">Buy Kit</button>
-<p id="lifetime-status" class="status"></p>
-</div>
-
-</div>
-</section>
-
-<section class="discord" id="discord">
-<h2 class="section-title">Discord Server</h2>
-<p>Stay updated with news, wipes, and server events.</p>
-<a class="btn" href="#">JOIN DISCORD</a>
-</section>
-
-<footer>
-© 2026 Wasteland Rust — All Rights Reserved
-</footer>
-
-<script>
-function buyVip(type){
-    const types=["week","month","year","lifetime"];
-
-    types.forEach(t=>{
-        document.getElementById(t+"-status").innerText="";
-    });
-
-    document.getElementById(type+"-status").innerText=
-    "We are not pay to win";
-}
-</script>
-
-</body>
-</html>
