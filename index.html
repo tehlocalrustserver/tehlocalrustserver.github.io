@@ -1,307 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wasteland Rust</title>
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+:root{
+    --bg:#070a12;
+    --panel:rgba(255,255,255,.06);
+    --panel2:rgba(255,255,255,.09);
+    --text:#f3f5ff;
+    --muted:#a9b0c7;
+    --accent:#ff7b00;
+    --line:rgba(255,255,255,.08);
+}
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:"Space Grotesk",sans-serif;
 }
 
-html{
-    scroll-behavior:smooth;
-}
+html{ scroll-behavior:smooth; }
 
 body{
-    background:#060606;
-    color:white;
+    background:
+    radial-gradient(circle at top, rgba(255,123,0,.15), transparent 40%),
+    radial-gradient(circle at bottom, rgba(120,90,255,.12), transparent 45%),
+    var(--bg);
+    color:var(--text);
     overflow-x:hidden;
+}
+
+/* subtle grid */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size:50px 50px;
+    pointer-events:none;
+    z-index:-1;
 }
 
 header{
     min-height:100vh;
     background:
-    radial-gradient(circle at top, rgba(255,120,0,.25), transparent 45%),
-    linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.92)),
+    linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.92)),
     url("20260511013255_1.jpg");
     background-size:cover;
     background-position:center;
+    padding:25px 8%;
     display:flex;
     flex-direction:column;
-    padding:30px 7%;
 }
 
 nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(15,15,15,.75);
-    backdrop-filter:blur(10px);
-    padding:18px 30px;
+    padding:16px 24px;
     border-radius:18px;
-    border:1px solid rgba(255,255,255,.05);
+    background:var(--panel);
+    border:1px solid var(--line);
+    backdrop-filter:blur(14px);
 }
 
 .logo{
-    font-size:30px;
-    font-weight:900;
-    color:#ff7b00;
-    text-transform:uppercase;
-    letter-spacing:2px;
+    font-size:28px;
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:1px;
 }
 
 nav ul{
     display:flex;
+    gap:25px;
     list-style:none;
-    gap:35px;
 }
 
 nav a{
-    color:#d8d8d8;
     text-decoration:none;
-    font-size:15px;
+    color:var(--muted);
+    font-size:14px;
     text-transform:uppercase;
-    letter-spacing:1px;
-    transition:.25s;
+    transition:.2s;
 }
 
 nav a:hover{
-    color:#ff7b00;
+    color:white;
 }
 
 .hero{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:flex-start;
+    margin-top:140px;
     max-width:750px;
 }
 
 .hero h1{
-    font-size:96px;
-    line-height:.9;
-    margin-bottom:25px;
-    font-weight:900;
-    text-transform:uppercase;
+    font-size:86px;
+    line-height:1;
+    margin-bottom:20px;
 }
 
 .hero p{
-    color:#bcbcbc;
-    font-size:20px;
-    line-height:1.8;
-    margin-bottom:40px;
+    color:var(--muted);
+    font-size:19px;
+    line-height:1.7;
+    margin-bottom:30px;
 }
 
 .btn{
-    background:#ff7b00;
+    display:inline-block;
+    padding:14px 34px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#ff7b00,#ff3d00);
     color:white;
     text-decoration:none;
-    padding:18px 42px;
-    border-radius:100px;
-    font-weight:bold;
+    font-weight:600;
     border:none;
     cursor:pointer;
     transition:.25s;
-    box-shadow:0 10px 35px rgba(255,123,0,.3);
+    box-shadow:0 10px 30px rgba(255,123,0,.25);
 }
 
 .btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 15px 40px rgba(255,123,0,.45);
+    transform:translateY(-3px);
+    box-shadow:0 15px 40px rgba(255,123,0,.35);
 }
 
+/* sections */
 section{
-    padding:120px 7%;
+    padding:110px 8%;
 }
 
 .section-title{
     text-align:center;
-    font-size:58px;
-    margin-bottom:60px;
-    text-transform:uppercase;
-    font-weight:900;
+    font-size:44px;
+    margin-bottom:50px;
+    font-weight:700;
 }
 
-.features{
+/* cards */
+.features,
+.info-grid,
+.vip-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:22px;
 }
 
-.card{
-    background:linear-gradient(145deg,#111,#1b1b1b);
-    padding:45px;
-    border-radius:30px;
-    border:1px solid rgba(255,255,255,.05);
-    position:relative;
-    overflow:hidden;
-    transition:.3s;
-}
-
-.card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:5px;
-    background:#ff7b00;
-}
-
-.card:hover{
-    transform:translateY(-10px) rotate(-1deg);
-}
-
-.card h3{
-    font-size:28px;
-    margin-bottom:20px;
-    color:#ff7b00;
-}
-
-.card p{
-    color:#c8c8c8;
-    line-height:1.8;
-}
-
-.server-info{
-    background:#0b0b0b;
-}
-
-.info-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.info-box{
-    background:#131313;
-    padding:40px;
-    border-radius:24px;
-    text-align:center;
-    border:1px solid rgba(255,255,255,.05);
+.card,
+.info-box,
+.store-box{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:28px;
+    backdrop-filter:blur(12px);
     transition:.25s;
 }
 
-.info-box:hover{
-    transform:translateY(-8px);
-    border-color:#ff7b00;
+.card:hover,
+.info-box:hover,
+.store-box:hover{
+    transform:translateY(-6px);
+    background:var(--panel2);
+}
+
+.card h3,
+.store-box h3{
+    color:var(--accent);
+    margin-bottom:12px;
+}
+
+.card p,
+.store-box li{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+.server-info{
+    background:linear-gradient(180deg,transparent,rgba(255,255,255,.02));
 }
 
 .info-box span{
     display:block;
-    color:#888;
-    margin-bottom:15px;
+    color:var(--muted);
+    margin-bottom:10px;
+    font-size:13px;
     text-transform:uppercase;
-    letter-spacing:1px;
-    font-size:14px;
 }
 
 .info-box h3{
-    font-size:32px;
+    font-size:26px;
 }
 
+/* store */
 .store{
-    background:linear-gradient(to bottom,#070707,#111);
-}
-
-.vip-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:35px;
-}
-
-.store-box{
-    background:#121212;
-    padding:50px 35px;
-    border-radius:30px;
-    text-align:center;
-    border:1px solid rgba(255,255,255,.05);
-    transition:.3s;
-    position:relative;
-}
-
-.store-box:hover{
-    transform:translateY(-12px) scale(1.02);
-    border-color:#ff7b00;
-}
-
-.store-box h3{
-    font-size:30px;
-    margin-bottom:15px;
-}
-
-.price{
-    font-size:64px;
-    font-weight:900;
-    color:#ff7b00;
-    margin:25px 0;
-}
-
-.store-box ul{
-    list-style:none;
-    margin-bottom:35px;
-}
-
-.store-box li{
-    margin:14px 0;
-    color:#c9c9c9;
-    font-size:17px;
-}
-
-.status{
-    margin-top:20px;
-    color:#ffb15c;
-    font-weight:bold;
-}
-
-.discord{
-    text-align:center;
-    background:#090909;
-}
-
-.discord p{
-    font-size:20px;
-    color:#c5c5c5;
-    margin:20px auto 40px;
-    max-width:700px;
-    line-height:1.8;
-}
-
-footer{
-    text-align:center;
-    padding:40px;
-    color:#666;
-    background:black;
-    border-top:1px solid rgba(255,255,255,.05);
-}
-
-@media(max-width:768px){
-
-.hero h1{
-    font-size:58px;
-}
-
-.section-title{
-    font-size:42px;
-}
-
-nav{
-    flex-direction:column;
-    gap:20px;
-}
-
-nav ul{
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-.hero{
-    padding-top:80px;
+    background:rgba(0,0,0,.2);
 }
 
 .price{
     font-size:48px;
-}
+    font-weight:700;
+    color:var(--accent);
+    margin:18px 0;
 }
 
+.store-box ul{
+    list-style:none;
+    margin:20px 0;
+}
+
+.store-box li{
+    margin:10px 0;
+}
+
+/* status */
+.status{
+    margin-top:10px;
+    color:#ffb36b;
+    font-weight:600;
+}
+
+/* discord */
+.discord{
+    text-align:center;
+}
+
+.discord p{
+    color:var(--muted);
+    font-size:18px;
+    margin:20px auto 30px;
+    max-width:650px;
+}
+
+/* footer */
+footer{
+    text-align:center;
+    padding:30px;
+    color:var(--muted);
+    border-top:1px solid var(--line);
+}
+
+/* responsive */
+@media(max-width:768px){
+    .hero h1{ font-size:52px; }
+    nav{ flex-direction:column; gap:12px; }
+    .hero{ margin-top:90px; }
+}
 </style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">Wasteland Rust</div>
+<ul>
+<li><a href="#server">Server</a></li>
+<li><a href="#store">Store</a></li>
+<li><a href="#discord">Discord</a></li>
+</ul>
+</nav>
+
+<div class="hero">
+<h1>Survive. Raid. Dominate.</h1>
+<p>Balanced PvP, active admins, monthly wipes, and a clean competitive experience.</p>
+<a class="btn" href="steam://connect/127.0.0.1:28015">JOIN NOW</a>
+</div>
+</header>
+
+<section id="features">
+<h2 class="section-title">Why Choose Us</h2>
+<div class="features">
+<div class="card">
+<h3>Active Admins</h3>
+<p>Fast response, fair moderation, and anti-cheat enforcement.</p>
+</div>
+<div class="card">
+<h3>Balanced PvP</h3>
+<p>No pay-to-win mechanics. Pure skill-based gameplay.</p>
+</div>
+<div class="card">
+<h3>Stable Server</h3>
+<p>Low lag, optimized performance, and reliable uptime.</p>
+</div>
+</div>
+</section>
+
+<section class="server-info" id="server">
+<h2 class="section-title">Server Info</h2>
+<div class="info-grid">
+<div class="info-box"><span>IP</span><h3>127.0.0.1:28015</h3></div>
+<div class="info-box"><span>Map Size</span><h3>4250</h3></div>
+<div class="info-box"><span>Wipe</span><h3>Monthly</h3></div>
+<div class="info-box"><span>Team Limit</span><h3>5 Players</h3></div>
+</div>
+</section>
+
+<section class="store" id="store">
+<h2 class="section-title">Store</h2>
+<div class="vip-grid">
+
+<div class="store-box">
+<h3>VIP Week</h3>
+<div class="price">$4.99</div>
+<ul><li>VIP Kit</li><li>Tag</li><li>7 Days</li></ul>
+<button class="btn" onclick="buyVip('week')">Buy</button>
+<p id="week-status" class="status"></p>
+</div>
+
+<div class="store-box">
+<h3>VIP Month</h3>
+<div class="price">$7.99</div>
+<ul><li>VIP Kit</li><li>Tag</li><li>30 Days</li></ul>
+<button class="btn" onclick="buyVip('month')">Buy</button>
+<p id="month-status" class="status"></p>
+</div>
+
+<div class="store-box">
+<h3>VIP Year</h3>
+<div class="price">$24.99</div>
+<ul><li>VIP Kit</li><li>Tag</li><li>365 Days</li></ul>
+<button class="btn" onclick="buyVip('year')">Buy</button>
+<p id="year-status" class="status"></p>
+</div>
+
+<div class="store-box">
+<h3>Lifetime</h3>
+<div class="price">$89.99</div>
+<ul><li>VIP Kit</li><li>Tag</li><li>Forever</li></ul>
+<button class="btn" onclick="buyVip('lifetime')">Buy</button>
+<p id="lifetime-status" class="status"></p>
+</div>
+
+</div>
+</section>
+
+<section class="discord" id="discord">
+<h2 class="section-title">Discord</h2>
+<p>Updates, wipes, events, and announcements happen here.</p>
+<a class="btn" href="#">Join Discord</a>
+</section>
+
+<footer>
+© 2026 Wasteland Rust
+</footer>
+
+<script>
+function buyVip(type){
+    ["week","month","year","lifetime"].forEach(t=>{
+        document.getElementById(t+"-status").innerText="";
+    });
+    document.getElementById(type+"-status").innerText="We are not p2w";
+}
+</script>
+
+</body>
+</html>
